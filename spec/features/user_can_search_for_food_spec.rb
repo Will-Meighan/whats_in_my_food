@@ -12,7 +12,7 @@ feature "user can search for food" do
     # And I select "Colorado" from the dropdown
     click_on "Search"
     # And I click on "submit"
-    expect(current_path).to eq(search_path)
+    expect(current_path).to eq(foods_path)
     # Then my path should be "/search" with "foods=sweet potatoes" in the parameters
     expect(page).to have_content("10 Results")
     # And I should see a message "7 Results"

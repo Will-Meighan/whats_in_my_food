@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class FoodController < ApplicationController
   def index
     q = params[:q]
 
