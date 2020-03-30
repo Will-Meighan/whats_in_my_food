@@ -6,9 +6,9 @@ class FoodController < ApplicationController
       faraday.headers["FOOD-DATA-API-KEY"] = 'UKykCvjqPXCGPwTvorRAGS4imEV12e8z5kxqEUgy'
     end
 
-    response = conn.get("/fdc/v1/search?api_key=UKykCvjqPXCGPwTvorRAGS4imEV12e8z5kxqEUgy\&generalSearchInput=#{q}")
+    response = conn.get("/fdc/v1/search?api_key=UKykCvjqPXCGPwTvorRAGS4imEV12e8z5kxqEUgy\&ingredients=#{q}")
 
     json = JSON.parse(response.body, symbolize_names: true)
-    @foods = json[:foods]
+    @foods = json[:foods][0..9]
   end
 end
