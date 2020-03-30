@@ -8,9 +8,9 @@ feature "user can search for food" do
     # When I visit "/"
     visit '/'
 
-    fill_in :foods, with: "sweet potatoes"
+    fill_in :q, with: "sweet potatoes"
     # And I select "Colorado" from the dropdown
-    click_on "Submit"
+    click_on "Search"
     # And I click on "submit"
     expect(current_path).to eq(search_path)
     # Then my path should be "/search" with "foods=sweet potatoes" in the parameters
