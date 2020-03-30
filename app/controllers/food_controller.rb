@@ -3,10 +3,10 @@ class FoodController < ApplicationController
     q = params[:q]
 
     conn = Faraday.new(url: "https://api.nal.usda.gov/") do |faraday|
-      faraday.headers["FOOD-DATA-API-KEY"] = 'UKykCvjqPXCGPwTvorRAGS4imEV12e8z5kxqEUgy'
+      faraday.headers["X-API-KEY"] = ENV["FOOD-DATA-API-KEY"]
     end
 
-    response = conn.get("/fdc/v1/search?api_key=UKykCvjqPXCGPwTvorRAGS4imEV12e8z5kxqEUgy\&ingredients=#{q}")
+    response = conn.get("/fdc/v1/search?api_key=X-API-KEY\&ingredients=#{q}")
 
     json = JSON.parse(response.body, symbolize_names: true)
     @foods = json[:foods][0..9]
